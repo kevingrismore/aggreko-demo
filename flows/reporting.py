@@ -2,7 +2,12 @@ from datetime import datetime
 
 from prefect import flow, get_client
 from prefect.artifacts import TableArtifact
-from prefect.client.schemas.filters import DeploymentFilter, DeploymentFilterName, FlowRunFilter, FlowRunFilterStartTime
+from prefect.client.schemas.filters import (
+    DeploymentFilter,
+    DeploymentFilterName,
+    FlowRunFilter,
+    FlowRunFilterStartTime,
+)
 from prefect.client.schemas.objects import FlowRun
 from prefect.settings import PREFECT_UI_URL
 
@@ -21,7 +26,7 @@ async def reporting(
             ),
             deployment_filter=DeploymentFilter(
                 name=DeploymentFilterName(any_=deployments)
-            )
+            ),
         )
 
         flow_run_list = []
